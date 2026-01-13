@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Unnimaya Padinjareveettil | QA Automation & Accessibility Portfolio</title>
+  <meta name="description" content="ISTQB & Agile certified QA professional with 4+ years across Test Automation, Manual QA, and Accessibility testing. Playwright (Java), CI/CD Azure DevOps, WCAG, cross-platform testing." />
+  <style>
+    :root{
+      --bg:#0b1220;
+      --panel:#101a2e;
+      --card:#0f1a30;
+      --text:#e8edf7;
+      --muted:#b8c3da;
+      --line:#223154;
+      --accent:#6ea8fe;
+      --accent2:#7ee2b8;
+      --warn:#ffd66e;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 1100px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 10% 0%, rgba(110,168,254,.18), transparent 60%),
+        radial-gradient(900px 500px at 90% 10%, rgba(126,226,184,.14), transparent 55%),
+        radial-gradient(900px 600px at 50% 110%, rgba(255,214,110,.10), transparent 55%),
+        var(--bg);
+      line-height:1.55;
+    }
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 20px 70px}
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.65);
+      border-bottom: 1px solid rgba(34,49,84,.65);
+    }
+    .nav-inner{max-width:var(--max); margin:0 auto; padding:14px 20px; display:flex; gap:14px; align-items:center; justify-content:space-between}
+    .brand{display:flex; flex-direction:column; gap:2px}
+    .brand b{letter-spacing:.2px}
+    .brand span{font-size:12px; color:var(--muted)}
+    .menu{display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:flex-end}
+    .chip{
+      display:inline-flex; align-items:center; gap:8px;
+      border:1px solid rgba(34,49,84,.9);
+      background: rgba(16,26,46,.8);
+      padding:8px 10px;
+      border-radius:999px;
+      font-size:13px;
+      color:var(--text);
+      box-shadow: 0 6px 18px rgba(0,0,0,.2);
+    }
+    .chip:hover{border-color:rgba(110,168,254,.65)}
+    .hero{
+      margin-top:22px;
+      background: linear-gradient(180deg, rgba(16,26,46,.85), rgba(16,26,46,.55));
+      border:1px solid rgba(34,49,84,.75);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .hero-inner{padding:28px 26px 22px; display:grid; gap:18px; grid-template-columns: 1.1fr .9fr}
+    @media (max-width: 900px){
+      .hero-inner{grid-template-columns:1fr}
+      .menu{justify-content:flex-start}
+    }
+    .kicker{font-family:var(--mono); font-size:12px; color:var(--muted)}
+    h1{margin:6px 0 10px; font-size:34px; line-height:1.2}
+    .subtitle{color:var(--muted); font-size:15px; max-width:66ch}
+    .cta{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(34,49,84,.9);
+      background: rgba(15,26,48,.95);
+      color: var(--text);
+      font-weight:600;
+      box-shadow: 0 10px 24px rgba(0,0,0,.25);
+    }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(110,168,254,.95), rgba(110,168,254,.55));
+      border-color: rgba(110,168,254,.75);
+      color: #071123;
+    }
+    .btn:hover{transform: translateY(-1px); transition: .15s ease}
+    .meta{
+      display:grid; gap:12px;
+      align-content:start;
+      padding:18px;
+      border-radius: 16px;
+      background: rgba(15,26,48,.55);
+      border: 1px solid rgba(34,49,84,.7);
+    }
+    .meta .row{display:flex; gap:10px; flex-wrap:wrap; align-items:center; color:var(--muted); font-size:14px}
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 10px; border-radius:999px;
+      border:1px solid rgba(34,49,84,.85);
+      background: rgba(16,26,46,.7);
+      color: var(--text);
+      font-size:13px;
+      font-family: var(--mono);
+    }
+    section{margin-top:26px}
+    .section-head{display:flex; align-items:flex-end; justify-content:space-between; gap:12px; margin:0 0 12px}
+    .section-head h2{margin:0; font-size:20px}
+    .section-head p{margin:0; color:var(--muted); font-size:13px; max-width:70ch}
+    .grid{display:grid; gap:14px}
+    .grid.two{grid-template-columns: repeat(2, minmax(0,1fr))}
+    .grid.three{grid-template-columns: repeat(3, minmax(0,1fr))}
+    @media (max-width: 900px){
+      .grid.two,.grid.three{grid-template-columns:1fr}
+    }
+    .card{
+      border:1px solid rgba(34,49,84,.75);
+      background: rgba(16,26,46,.6);
+      border-radius: var(--radius);
+      padding:16px;
+      box-shadow: 0 12px 30px rgba(0,0,0,.25);
+    }
+    .card h3{margin:0 0 8px; font-size:16px}
+    .card p{margin:0; color:var(--muted); font-size:14px}
+    .pillrow{display:flex; gap:8px; flex-wrap:wrap; margin-top:12px}
+    .pill{
+      display:inline-flex;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(34,49,84,.85);
+      background: rgba(15,26,48,.75);
+      color: var(--text);
+      font-size:12px;
+    }
+    .kpi{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:10px;
+    }
+    .kpi .big{font-size:26px; font-weight:800}
+    .kpi .small{color:var(--muted); font-size:13px}
+    .timeline{display:grid; gap:12px}
+    .titem{
+      display:grid; gap:8px;
+      padding:16px;
+      border-radius: var(--radius);
+      border:1px solid rgba(34,49,84,.75);
+      background: rgba(16,26,46,.55);
+    }
+    .titem .top{display:flex; flex-wrap:wrap; gap:10px; align-items:baseline; justify-content:space-between}
+    .titem .role{font-weight:800}
+    .titem .org{color:var(--muted)}
+    .titem ul{margin:6px 0 0 18px; color:var(--muted)}
+    .titem li{margin:6px 0}
+    footer{
+      margin-top:36px;
+      padding-top:18px;
+      border-top:1px solid rgba(34,49,84,.65);
+      color:var(--muted);
+      font-size:13px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      justify-content:space-between;
+      align-items:center;
+    }
+    .note{font-family:var(--mono); font-size:12px; color:var(--muted)}
+  </style>
+</head>
+
+<body>
+  <!-- Sticky Navigation -->
+  <div class="nav">
+    <div class="nav-inner">
+      <div class="brand">
+        <b>Unnimaya Padinjareveettil</b>
+        <span>QA Automation • Accessibility • Agile Delivery</span>
+      </div>
+      <div class="menu">
+        <a class="chip" href="#about">About</a>
+        <a class="chip" href="#skills">Skills</a>
+        <a class="chip" href="#case-studies">Case Studies</a>
+        <a class="chip" href="#experience">Experience</a>
+        <a class="chip" href="#certs">Certifications</a>
+        <a class="chip" href="#contact">Contact</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <!-- Hero -->
+    <div class="hero" id="top">
+      <div class="hero-inner">
+        <div>
+          <div class="kicker">ISTQB & Agile Certified • 4+ Years • UK Work Eligible • Immediate Start</div>
+          <h1>QA Tester / Test Automation Engineer<br/>with Accessibility Leadership</h1>
+          <p class="subtitle">
+            I deliver high-confidence releases by combining <b>Playwright automation (Java)</b>, robust
+            <b>Agile QA governance</b>, and <b>WCAG-aligned accessibility testing</b> across web and mobile platforms.
+            My operating model is outcome-led: reduce regression cycle time, increase coverage, and raise customer experience quality.
+          </p>
+
+          <div class="cta">
+            <a class="btn primary" href="#case-studies">View Case Studies</a>
+            <a class="btn" href="#contact">Contact</a>
+            <!-- Replace the # with your hosted CV link (Google Drive, Dropbox, etc.) -->
+            <a class="btn" href="#" title="Add your hosted CV link here">Download CV</a>
+            <a class="btn" href="https://www.linkedin.com/in/unnimaya-padinjareveettil" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+
+          <div class="pillrow" style="margin-top:16px">
+            <span class="pill">Playwright (Java)</span>
+            <span class="pill">Selenium</span>
+            <span class="pill">Appium</span>
+            <span class="pill">Azure DevOps CI/CD</span>
+            <span class="pill">WCAG • NVDA • VoiceOver</span>
+            <span class="pill">API • Postman</span>
+            <span class="pill">Cross-Device Testing</span>
+          </div>
+        </div>
+
+        <div class="meta">
+          <div class="row">
+            <span class="badge">Location</span>
+            <span>Coventry, CV1 3LB • UK</span>
+          </div>
+          <div class="row">
+            <span class="badge">Email</span>
+            <a href="mailto:unnimaya8080@gmail.com">unnimaya8080@gmail.com</a>
+          </div>
+          <div class="row">
+            <span class="badge">Phone</span>
+            <span>+44 7352084236</span>
+          </div>
+          <div class="row">
+            <span class="badge">Delivery Focus</span>
+            <span>Automation ROI • Accessibility Compliance • Agile Quality</span>
+          </div>
+
+          <div class="grid two" style="margin-top:8px">
+            <div class="card kpi">
+              <div class="big">40%</div>
+              <div class="small">UI regression execution time reduction (automation optimisation)</div>
+            </div>
+            <div class="card kpi">
+              <div class="big">30%</div>
+              <div class="small">Increase in automation test coverage through scalable framework patterns</div>
+            </div>
+            <div class="card kpi">
+              <div class="big">60%</div>
+              <div class="small">Share of defects identified during accessibility & visual testing cycles</div>
+            </div>
+            <div class="card kpi">
+              <div class="big">30%</div>
+              <div class="small">Manual effort reduced via AI-driven accessibility tooling (Axe, Lighthouse)</div>
+            </div>
+          </div>
+
+          <div class="note">
+            Open to: Hybrid • Onsite • Remote (UK-wide)
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- About -->
+    <section id="about">
+      <div class="section-head">
+        <h2>About</h2>
+        <p>Positioning quality as a strategic enabler across product, engineering, and customer experience.</p>
+      </div>
+      <div class="grid two">
+        <div class="card">
+          <h3>Operating Model</h3>
+          <p>
+            I execute end-to-end QA ownership across <b>test strategy</b>, <b>test design</b>, <b>automation engineering</b>,
+            <b>defect governance</b>, and <b>release confidence</b>. I work best in Agile delivery ecosystems where
+            quality is embedded early and measured through outcomes.
+          </p>
+          <div class="pillrow">
+            <span class="pill">Agile / Scrum</span>
+            <span class="pill">SDLC / STLC</span>
+            <span class="pill">Test Planning</span>
+            <span class="pill">Defect Triage</span>
+            <span class="pill">Stakeholder Communication</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Growth Focus</h3>
+          <p>
+            I’m currently expanding capability in <b>Python</b> and <b>AI-powered QA tooling</b> to further
+            industrialise automation workflows and improve developer experience across teams.
+          </p>
+          <div class="pillrow">
+            <span class="pill">Python (Learning Track)</span>
+            <span class="pill">AI-powered Automation</span>
+            <span class="pill">Framework Maintainability</span>
+            <span class="pill">Quality Metrics</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <div class="section-head">
+        <h2>Skills & Tooling</h2>
+        <p>A capability matrix designed for recruiter scanning, ATS alignment, and technical validation.</p>
+      </div>
+
+      <div class="grid three">
+        <div class="card">
+          <h3>Testing</h3>
+          <p>Automation, Manual, Functional, Regression, Exploratory, UAT, Smoke, Cross-browser/device, UI/UX validation.</p>
+          <div class="pillrow">
+            <span class="pill">E2E</span><span class="pill">UAT</span><span class="pill">API</span><span class="pill">Performance</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Automation & Frameworks</h3>
+          <p>Playwright (Java), Selenium, Appium, BDD (Gherkin), TestNG, BrowserStack, real device testing.</p>
+          <div class="pillrow">
+            <span class="pill">Playwright</span><span class="pill">Selenium</span><span class="pill">Appium</span><span class="pill">BDD</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Accessibility</h3>
+          <p>WCAG-driven audits across web & mobile, with screen readers and automated tooling for prioritisation.</p>
+          <div class="pillrow">
+            <span class="pill">WCAG</span><span class="pill">NVDA</span><span class="pill">VoiceOver</span><span class="pill">TalkBack</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>DevOps & Delivery</h3>
+          <p>CI/CD pipelines (Azure DevOps), Git workflows, release confidence, scheduled execution on deployment confirmation.</p>
+          <div class="pillrow">
+            <span class="pill">Azure DevOps</span><span class="pill">CI/CD</span><span class="pill">Git</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Test Management</h3>
+          <p>JIRA-based defect lifecycle ownership, triage, verification, reporting, traceability, and documentation quality.</p>
+          <div class="pillrow">
+            <span class="pill">JIRA</span><span class="pill">Bug Triage</span><span class="pill">Reporting</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Languages</h3>
+          <p>Java, JavaScript, TypeScript, Python, SQL, plus HTML/CSS for UI validation and automation support.</p>
+          <div class="pillrow">
+            <span class="pill">Java</span><span class="pill">Python</span><span class="pill">TypeScript</span><span class="pill">SQL</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Case Studies -->
+    <section id="case-studies">
+      <div class="section-head">
+        <h2>Case Studies</h2>
+        <p>Outcome-oriented delivery narratives with measurable impact and clear execution signals.</p>
+      </div>
+
+      <div class="grid two">
+        <div class="card">
+          <h3>Case Study 1 — Automation Transformation (Lufthansa Group)</h3>
+          <p>
+            Built and enhanced a Playwright-based hybrid automation framework using Java to optimise regression throughput and
+            improve coverage at scale in an Agile delivery environment.
+          </p>
+          <ul>
+            <li>Reduced UI regression execution time by <b>40%</b></li>
+            <li>Improved test coverage by <b>30%</b> via reusable, maintainable test components</li>
+            <li>Integrated CI/CD execution using <b>Azure Pipelines</b> with scheduled overnight triggers</li>
+            <li>Partnered with developers for rapid defect resolution and release readiness</li>
+          </ul>
+          <div class="pillrow">
+            <span class="pill">Playwright</span><span class="pill">Java</span><span class="pill">Azure DevOps</span><span class="pill">Agile</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Case Study 2 — Accessibility Enablement & Compliance Leadership</h3>
+          <p>
+            Led a 3-member accessibility QA function, embedding WCAG compliance into delivery workflows across web and mobile.
+            Leveraged automated tooling to reduce effort while increasing defect discovery.
+          </p>
+          <ul>
+            <li>Identified ~<b>60%</b> of total defects while parallel-running accessibility and visual testing</li>
+            <li>Reduced manual testing effort by <b>30%</b> using <b>Axe DevTools</b> and <b>Google Lighthouse</b></li>
+            <li>Delivered training/enablement sessions to raise team capability and consistency</li>
+            <li>Earned client recognition for accessibility contributions</li>
+          </ul>
+          <div class="pillrow">
+            <span class="pill">WCAG</span><span class="pill">Axe DevTools</span><span class="pill">Lighthouse</span><span class="pill">NVDA</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Case Study 3 — Manual QA Governance to Support Agile Releases</h3>
+          <p>
+            Delivered robust manual QA coverage during sprint cycles through high-quality test design, defect lifecycle ownership,
+            and UAT validation to ensure alignment with end-user requirements.
+          </p>
+          <ul>
+            <li>Authored test cases and scenarios mapped to requirements and user stories</li>
+            <li>Managed QA artefacts: plans, reports, traceability matrices</li>
+            <li>Supported RCA and participated in sprint ceremonies (planning, review, stand-ups)</li>
+          </ul>
+          <div class="pillrow">
+            <span class="pill">Test Design</span><span class="pill">UAT</span><span class="pill">JIRA</span><span class="pill">RCA</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Recognition — Accessibility Initiative Award</h3>
+          <p>
+            Proposed and executed accessibility testing on a mailbox workflow, identifying 40+ defects and improving compliance.
+            Recognised with an individual award for delivery impact.
+          </p>
+          <div class="pillrow">
+            <span class="pill">40+ Defects Identified</span><span class="pill">Compliance Uplift</span><span class="pill">Award</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+      <div class="section-head">
+        <h2>Experience</h2>
+        <p>Role progression and responsibilities structured for quick hiring-manager validation.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="titem">
+          <div class="top">
+            <div>
+              <div class="role">Automation QA Tester</div>
+              <div class="org">Tata Consultancy Services — Client: Lufthansa Group (Websites & Mobile Apps)</div>
+            </div>
+            <div class="kicker">Mar 2023 – Mar 2025</div>
+          </div>
+          <ul>
+            <li>Contributed to Playwright-based hybrid automation framework (Java), improving speed and coverage.</li>
+            <li>Maintained reusable test assets aligned to best-practice patterns.</li>
+            <li>Executed cross-platform testing: Android, iOS, tablet, desktop.</li>
+            <li>Partnered with developers for defect resolution; produced high-fidelity bug reports (evidence/logs).</li>
+            <li>Supported Azure pipeline execution and scheduled overnight triggers.</li>
+            <li>Mentored junior testers for automation enablement.</li>
+          </ul>
+        </div>
+
+        <div class="titem">
+          <div class="top">
+            <div>
+              <div class="role">Manual QA Tester</div>
+              <div class="org">Tata Consultancy Services — Client: Lufthansa Group</div>
+            </div>
+            <div class="kicker">Mar 2022 – Mar 2023</div>
+          </div>
+          <ul>
+            <li>Performed functional, regression, exploratory, and ad-hoc testing across Agile sprints.</li>
+            <li>Created and documented test cases based on requirements and user stories.</li>
+            <li>Owned defect lifecycle in JIRA; supported UAT validation and sprint ceremonies.</li>
+          </ul>
+        </div>
+
+        <div class="titem">
+          <div class="top">
+            <div>
+              <div class="role">Accessibility QA Tester (Team Lead)</div>
+              <div class="org">Tata Consultancy Services — Client: Lufthansa Group</div>
+            </div>
+            <div class="kicker">Apr 2021 – Mar 2022</div>
+          </div>
+          <ul>
+            <li>Led a 3-member accessibility testing team delivering WCAG-aligned outcomes across web and mobile.</li>
+            <li>Used NVDA/VoiceOver/TalkBack plus automation tools (Axe, Lighthouse) to drive prioritised remediation.</li>
+            <li>Conducted translation checks for multiple languages.</li>
+          </ul>
+        </div>
+
+        <div class="titem">
+          <div class="top">
+            <div>
+              <div class="role">Volunteer Assistant</div>
+              <div class="org">British Heart Foundation — Coventry, UK</div>
+            </div>
+            <div class="kicker">Present</div>
+          </div>
+          <ul>
+            <li>Collaborates with staff and volunteers to improve process efficiency and customer experience.</li>
+            <li>Demonstrates adaptability, teamwork, and communication in a diverse environment.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certifications -->
+    <section id="certs">
+      <div class="section-head">
+        <h2>Education & Certifications</h2>
+        <p>Credibility signals and continuous learning aligned to modern QA expectations.</p>
+      </div>
+
+      <div class="grid two">
+        <div class="card">
+          <h3>Education</h3>
+          <p><b>Bachelor of Technology</b> — Electronics and Communication Engineering</p>
+          <p class="note">APJ Abdul Kalam Technological University, Kerala, India • CGPA: 7.84 • Aug 2020</p>
+        </div>
+
+        <div class="card">
+          <h3>Certifications</h3>
+          <ul>
+            <li>ISTQB Foundation Level — Aug 2021</li>
+            <li>ISTQB Agile Tester Extension — May 2022</li>
+            <li>Certified Professional Selenium Tester (GAQM) — Jun 2023</li>
+            <li>Currently Pursuing: Python Django Full Stack Web Development Certification</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Awards</h3>
+          <ul>
+            <li>On-the-Spot Award — Accessibility initiative (40+ defects identified; compliance uplift)</li>
+            <li>Learning Achievement Award — Professional development completion</li>
+            <li>Service & Commitment Award — Dedicated service at Tata Consultancy Services</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Work Preference</h3>
+          <ul>
+            <li>Eligible to work in the UK • Immediate joining</li
